@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace WebApplicationBPR2.ViewModels
 {
-    public class ContactViewModel   // used for model binding; it is going to store the data input by user in the contact form
+    // used for model binding; it is going to store the data input by user in the contact form
+    public class ContactViewModel   
     {
-        [Required]  //data annotation used for validation (that is, if user tries to send form without name, he cant cause it s mandatory)
-        [MinLength(5)]  // minimum 5 letters
+        //data annotation used for validation (that is, if user tries to send form without name, he cant cause it s mandatory)
+        // minimum 5 letters
+        [Required]  
+        [MinLength(5)]  
         public string Name { get; set; }
+        // email should have legitimate email structure
         [Required]
-        [EmailAddress]  // email should have legitimate email structure
+        [EmailAddress]  
         public string Email { get; set; }
         [Required]
         public string Subject { get; set; }

@@ -7,24 +7,32 @@ using WebApplicationBPR2.ViewModels;
 
 namespace WebApplicationBPR2.Controllers
 {
-    public class AppController : Controller // a cuontroller allows us to map a request that comes in to a specific action
+    // a cuontroller allows us to map a request that comes in to a specific action
+    public class AppController : Controller 
     {
-         
-        public IActionResult Index() //an action
+        //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
+        public IActionResult Index() 
         {
-            return View(); //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
+            return View(); 
         }
 
-        [HttpGet("contact")]    // delievers a request; // routing attribute so that we can make contact page more discoverable. Now we can ask specifically for website.com/contact not for the whole path website.com/app/contact 
-        public IActionResult Contact() //an action
+        // delievers a request; // routing attribute so that we can make contact page more discoverable. Now we can ask specifically for website.com/contact not for the whole path website.com/app/contact
+        // we can add the name displayed on the tab of browser from the controller instead of setting it in the view
+        //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
+        [HttpGet("contact")]    
+        public IActionResult Contact() 
         {
-            ViewBag.Title = "Contact Us"; // we can add the name displayed on the tab of browser from the controller instead of setting it in the view
-            return View(); //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
+            ViewBag.Title = "Contact Us"; 
+            return View(); 
         }
 
-        [HttpPost("contact")]   // for receiving user info    
-        public IActionResult Contact(ContactViewModel contactViewModel) // MVC will map the names of the inputs/area fields in the contact form to the properties in ContactViewModel;
-            // When model binding happens, it also affects a ModelState property, so for validation we can check if ModelState is valid when the data comes in 
+        // for receiving user info
+        // MVC will map the names of the inputs/area fields in the contact form to the properties in ContactViewModel;
+        // When model binding happens, it also affects a ModelState property, so for validation we can check if ModelState is valid when the data comes in 
+        //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
+        [HttpPost("contact")]       
+        public IActionResult Contact(ContactViewModel contactViewModel) 
+            
         {
             if(ModelState.IsValid)
             {
@@ -34,14 +42,15 @@ namespace WebApplicationBPR2.Controllers
             {
                 // show errors
             }
-            return View(); //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
+            return View(); 
         }
 
+        //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
         [HttpGet("about")]
         public IActionResult About() //an action
         {
             ViewBag.Title = "About Us";
-            return View(); //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
+            return View(); 
         }
 
         [HttpGet("products")]
