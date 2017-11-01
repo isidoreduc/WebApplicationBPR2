@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="~/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="~/css/mobile.css">
     <script src="~/lib/js/mobile.js" type="text/javascript"></script>
-    @RenderSection("scripts", false);    @*not all our pages have forms and validation areas, so we shouldn't load validation scripts on all pages
-        this line imports scripts only on pages that have a section called "scripts"*@
+    
 </head>
 
 <body>
@@ -60,6 +59,9 @@
                     <a href="http://freewebsitetemplates.com/go/twitter/" class="twitter">twitter</a>
                     <a href="http://freewebsitetemplates.com/go/googleplus/" class="googleplus">googleplus</a>
                     <a href="http://pinterest.com/fwtemplates/" class="pinterest">pinterest</a>
+                    @RenderSection("scripts", false);    
+                        @*not all our pages have forms and validation areas, so we shouldn't load validation scripts on all pages
+                        this line imports scripts only on pages that have a section called "scripts"*@
                 </div>
                 <p>&copy; 1993-@DateTime.Now.Year Freeeze. All Rights Reserved.</p>
             </div>

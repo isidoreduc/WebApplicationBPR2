@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using WebApplicationBPR2.Services;
 
 namespace WebApplicationBPR2
 {
@@ -16,6 +17,8 @@ namespace WebApplicationBPR2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(); // injects MVC dependency (adds all services mvc needs)
+            services.AddTransient<IMailService, MockMailService>();
+            // support for real mail service
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplicationBPR2.Services;
 using WebApplicationBPR2.ViewModels;
 
 namespace WebApplicationBPR2.Controllers
@@ -10,6 +11,12 @@ namespace WebApplicationBPR2.Controllers
     // a cuontroller allows us to map a request that comes in to a specific action
     public class AppController : Controller 
     {
+        private readonly IMailService _mailService;
+
+        public AppController(IMailService mailService)
+        {
+            _mailService = mailService;
+        }
         //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
         public IActionResult Index() 
         {
@@ -36,7 +43,10 @@ namespace WebApplicationBPR2.Controllers
         {
             if(ModelState.IsValid)
             {
-                // send email
+                // send email either to the customer service departm or a copy to the client as confirmation, or both
+                _mailService.SendMail("info@freeze.com", contactViewModel.Subject, $"From: {contactViewModel.Name} - {contactViewModel.Email}; Message: {contactViewModel.Message}");
+                ViewBag.UserMessage = "Mail sent successfully";
+                ModelState.Clear();
             }
             else
             {
