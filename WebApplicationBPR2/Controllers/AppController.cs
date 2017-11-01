@@ -8,7 +8,7 @@ using WebApplicationBPR2.ViewModels;
 
 namespace WebApplicationBPR2.Controllers
 {
-    // a cuontroller allows us to map a request that comes in to a specific action
+    // a controller allows us to map a request that comes in to a specific action
     public class AppController : Controller 
     {
         private readonly IMailService _mailService;
