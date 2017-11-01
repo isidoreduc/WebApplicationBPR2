@@ -3,10 +3,8 @@
 
 @*targeted by the @RenderSection in our _Layout*@
 @*we can drag n drop the needed scripts from wwwroot/lib after getting dependencies through bower*@
-@section scripts {  
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-}
+
+
 
 
 <div id="body" class="contact">
@@ -43,9 +41,11 @@
                 <textarea asp-for="Message" placeholder="Share your thoughts (max. 250 characters)" cols="50" rows="7" ></textarea>
                 <span asp-validation-for="Message"></span>
                 <input type="submit" value="Send" id="submit">
-                <section style="animation:alternate" >@ViewBag.UserMessage</section>
+                <br />
             </form>
-            
+            <div style="font-family:Roboto; text-align:left; font-size: 14px; color:gray">
+                @ViewBag.UserMessage
+            </div>
            
                
            @*<form method="post" action="index.html">
