@@ -43,6 +43,7 @@
                 <textarea asp-for="Message" placeholder="Share your thoughts (max. 250 characters)" cols="50" rows="7" ></textarea>
                 <span asp-validation-for="Message"></span>
                 <input type="submit" value="Send" id="submit">
+                <section style="animation:alternate" >@ViewBag.UserMessage</section>
             </form>
             
            
