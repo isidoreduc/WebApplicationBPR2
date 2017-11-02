@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplicationBPR2.Services;
 using WebApplicationBPR2.ViewModels;
+using WebApplicationBPR2.ViewModels.SampleData;
 
 namespace WebApplicationBPR2.Controllers
 {
@@ -21,6 +22,11 @@ namespace WebApplicationBPR2.Controllers
         public IActionResult Index() 
         {
             return View(); 
+        }
+
+        public IActionResult ItemTemplate()
+        {
+            return View(SampleData.ListProducts);
         }
 
         // delievers a request; // routing attribute so that we can make contact page more discoverable. Now we can ask specifically for website.com/contact not for the whole path website.com/app/contact
