@@ -7,15 +7,31 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplicationBPR2.Services;
+using WebApplicationBPR2.Data.DataContext;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApplicationBPR2
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
+        public Startup(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // injects our DataContext, so we can accually connect to the physical database
+            services.AddDbContext<DataContext>(config =>
+            {
+                config.UseSqlServer(_configuration.GetConnectionString("StoreConnectionString")); //needs a connection string to our database
+            }
+            ); 
             services.AddMvc(); // injects MVC dependency (adds all services mvc needs)
             services.AddTransient<IMailService, MockMailService>();
             // support for real mail service
