@@ -1,11 +1,11 @@
-﻿using DutchTreat.Data.Entities;
+﻿using WebApplicationBPR2.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplicationBPR2.Data.DataContext
+namespace WebApplicationBPR2.Data
 {
         // we need this context class to interface with our physical database
     public class DataContext : DbContext

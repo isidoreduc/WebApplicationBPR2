@@ -6,21 +6,22 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
-using WebApplicationBPR2.Data.DataContext;
+using WebApplicationBPR2.Data;
 
 namespace WebApplicationBPR2.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20171103201723_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DutchTreat.Data.Entities.Order", b =>
+            modelBuilder.Entity("WebApplicationBPR2.Data.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -34,7 +35,7 @@ namespace WebApplicationBPR2.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("DutchTreat.Data.Entities.OrderItem", b =>
+            modelBuilder.Entity("WebApplicationBPR2.Data.Entities.OrderItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -56,7 +57,7 @@ namespace WebApplicationBPR2.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("DutchTreat.Data.Entities.Product", b =>
+            modelBuilder.Entity("WebApplicationBPR2.Data.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -76,13 +77,13 @@ namespace WebApplicationBPR2.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("DutchTreat.Data.Entities.OrderItem", b =>
+            modelBuilder.Entity("WebApplicationBPR2.Data.Entities.OrderItem", b =>
                 {
-                    b.HasOne("DutchTreat.Data.Entities.Order", "Order")
+                    b.HasOne("WebApplicationBPR2.Data.Entities.Order", "Order")
                         .WithMany("Items")
                         .HasForeignKey("OrderId");
 
-                    b.HasOne("DutchTreat.Data.Entities.Product", "Product")
+                    b.HasOne("WebApplicationBPR2.Data.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
                 });

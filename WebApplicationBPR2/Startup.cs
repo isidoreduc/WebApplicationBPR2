@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplicationBPR2.Services;
-using WebApplicationBPR2.Data.DataContext;
+using WebApplicationBPR2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -35,6 +30,7 @@ namespace WebApplicationBPR2
             services.AddMvc(); // injects MVC dependency (adds all services mvc needs)
             services.AddTransient<IMailService, MockMailService>();
             // support for real mail service
+            services.AddTransient<DataSeeder>(); // needed to actually seed data
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +50,16 @@ namespace WebApplicationBPR2
                     "{controller}/{action}/{id?}", //using placeholders to map any url with this structure(id is optional)
                     new { controller = "App", Action = "Index" }); // an annonymus type to set up the default go to page when there is no specific info in the url (f.ex. you have a url like store.com, not store.com/app/contact. so in this case it displays by default the app/index.cshtml page)
             });
+
+            if (env.IsDevelopment())
+            {
+                // seed database
+                using (var scope = app.ApplicationServices.CreateScope()) // need to resolve some internal pipelining scope conflicts
+                {
+                    var seeder = scope.ServiceProvider.GetService<DataSeeder>();
+                    seeder.Seed();
+                }
+            }
         }
     }
 }
