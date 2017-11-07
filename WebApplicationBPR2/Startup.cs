@@ -5,6 +5,7 @@ using WebApplicationBPR2.Services;
 using WebApplicationBPR2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using WebApplicationBPR2.Data.Repository;
 
 namespace WebApplicationBPR2
 {
@@ -26,7 +27,9 @@ namespace WebApplicationBPR2
             {
                 config.UseSqlServer(_configuration.GetConnectionString("StoreConnectionString")); //needs a connection string to our database
             }
-            ); 
+            );
+
+            services.AddScoped<IDataRepository, DataRepository>();
             services.AddMvc(); // injects MVC dependency (adds all services mvc needs)
             services.AddTransient<IMailService, MockMailService>();
             // support for real mail service

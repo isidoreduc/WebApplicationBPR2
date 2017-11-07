@@ -16,14 +16,8 @@ namespace WebApplicationBPR2.Data.Entities
         public decimal Price { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string PhotoId { get; set; }
 
-        //------------------------------------------------ to remove -----------------------------------------------  
-        //public string ArtDating { get; set; }
-        //public string ArtId { get; set; }
-        //public string Artist { get; set; }
-        //public DateTime ArtistBirthDate { get; set; }
-        //public DateTime ArtistDeathDate { get; set; }
-        //public string ArtistNationality { get; set; }
     }
 }
 

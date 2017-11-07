@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplicationBPR2.Data;
+using WebApplicationBPR2.Data.Repository;
 using WebApplicationBPR2.Services;
 using WebApplicationBPR2.ViewModels;
 
@@ -13,12 +14,14 @@ namespace WebApplicationBPR2.Controllers
     public class AppController : Controller 
     {
         private readonly IMailService _mailService;
-        private readonly DataContext _dataContext;
+        private readonly IDataRepository _dataRepository;
+        
 
-        public AppController(IMailService mailService, DataContext dataContext)
+        public AppController(IMailService mailService, IDataRepository dataRepository)
         {
             _mailService = mailService;
-            _dataContext = dataContext;
+            _dataRepository = dataRepository;
+            
         }
         //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
         public IActionResult Index() 
@@ -72,9 +75,7 @@ namespace WebApplicationBPR2.Controllers
             ViewBag.Title = "Our Products";
 
             //get the products though the _dataContext object we injected in the constructor
-            var products = _dataContext.Products.
-                            OrderBy(p => p.Category).
-                            ToList();
+            var products = _dataRepository.GetAllProducts();
             return View(products); // passing data to the view
         }
 
@@ -90,9 +91,7 @@ namespace WebApplicationBPR2.Controllers
         {
             ViewBag.Title = "Shop";
             //get the products though the _dataContext object we injected in the constructor
-            var products = _dataContext.Products.
-                            OrderBy(p => p.Category).
-                            ToList();
+            var products = _dataRepository.GetAllProducts();
             return View(products); // passing data to the view
         }
 
