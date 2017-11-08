@@ -91,7 +91,7 @@ namespace WebApplicationBPR2.Controllers
         {
             ViewBag.Title = "Shop";
             //get the products though the _dataContext object we injected in the constructor
-            var products = _dataRepository.GetProductsByCategory("Ice Cream");
+            var products = _dataRepository.GetAllProducts();
             return View(products); // passing data to the view
         }
 
