@@ -11,10 +11,9 @@ using WebApplicationBPR2.Data;
 namespace WebApplicationBPR2.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20171103201723_SeedData")]
-    partial class SeedData
+    partial class DataContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,6 +64,8 @@ namespace WebApplicationBPR2.Migrations
                     b.Property<string>("Category");
 
                     b.Property<string>("Description");
+
+                    b.Property<string>("PhotoId");
 
                     b.Property<decimal>("Price");
 

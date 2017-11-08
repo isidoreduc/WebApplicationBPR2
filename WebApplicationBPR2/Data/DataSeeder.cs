@@ -32,7 +32,8 @@ namespace WebApplicationBPR2.Data
                         Description = "A delicious profiterol",
                         Price = 13.99M,
                         Size = 400,
-                        Title = "Profiterol De Jour"
+                        Title = "Profiterol De Jour",
+                        PhotoId = "blackberry"
                     },
                     new Product
                     {
@@ -40,7 +41,8 @@ namespace WebApplicationBPR2.Data
                         Description = "A delicious cake",
                         Price = 19.99M,
                         Size = 700,
-                        Title = "Othello Cake"
+                        Title = "Othello Cake",
+                        PhotoId = "grapes"
                     },
                     new Product
                     {
@@ -48,7 +50,8 @@ namespace WebApplicationBPR2.Data
                         Description = "A delicious tart",
                         Price = 3.99M,
                         Size = 100,
-                        Title = "Dagmar tarte"
+                        Title = "Dagmar tarte",
+                        PhotoId = "pineapple"
                     }
             };
                 

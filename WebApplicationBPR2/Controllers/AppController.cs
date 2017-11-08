@@ -91,7 +91,7 @@ namespace WebApplicationBPR2.Controllers
         {
             ViewBag.Title = "Shop";
             //get the products though the _dataContext object we injected in the constructor
-            var products = _dataRepository.GetAllProducts();
+            var products = _dataRepository.GetProductsByCategory("Ice Cream");
             return View(products); // passing data to the view
         }
 
@@ -100,6 +100,30 @@ namespace WebApplicationBPR2.Controllers
         {
             ViewBag.Title = "Blog Articles";
             return View();
+        }
+
+
+
+        // categories of products
+        public IActionResult IceCream() //an action
+        {
+            ViewBag.Title = "Ice Cream";
+            var products = _dataRepository.GetProductsByCategory("Ice Cream");
+            return View(products);
+        }
+
+        public IActionResult Cakes() //an action
+        {
+            ViewBag.Title = "Cakes";
+            var products = _dataRepository.GetProductsByCategory("Cakes");
+            return View(products);
+        }
+
+        public IActionResult Tarts() //an action
+        {
+            ViewBag.Title = "Tarts";
+            var products = _dataRepository.GetProductsByCategory("Tarts");
+            return View(products);
         }
     }
 }

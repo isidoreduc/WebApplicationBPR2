@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Product>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<div id="body">
+    <div class="header">
+        <div>
+            <h1>Ice Cream</h1>
+        </div>
+    </div>
+
+
+    <div>
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <img src="~/images/@(item.PhotoId).jpg" alt="@item.Title">
+                <ul>
+                    <li>
+                        <h2>@item.Title</h2>
+                        <p>Price: @item.Price</p>
+                        <p>Size: @item.Size</p>
+                        <p>Description: @item.Description </p>
+                        <br />
+                        <p><button class="btn-success"> Buy </button></p>
+                    </li>
+                </ul>
+            </div>
+        }
+    </div>
+    <div>
+        <p><a asp-controller="App" asp-action="Product">Back</a></p>
+    </div>
+</div>
