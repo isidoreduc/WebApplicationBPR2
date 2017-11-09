@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplicationBPR2.Data;
-using WebApplicationBPR2.Data.Entities;
 using WebApplicationBPR2.Data.Repository;
 using WebApplicationBPR2.Services;
 using WebApplicationBPR2.ViewModels;
@@ -16,14 +15,13 @@ namespace WebApplicationBPR2.Controllers
     {
         private readonly IMailService _mailService;
         private readonly IDataRepository _dataRepository;
-        private readonly DataContext _context;
+        
 
-
-        public AppController(IMailService mailService, IDataRepository dataRepository, DataContext dataContext)
+        public AppController(IMailService mailService, IDataRepository dataRepository)
         {
             _mailService = mailService;
             _dataRepository = dataRepository;
-            _context = dataContext;
+            
         }
         //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
         public IActionResult Index() 
@@ -126,46 +124,6 @@ namespace WebApplicationBPR2.Controllers
             ViewBag.Title = "Tarts";
             var products = _dataRepository.GetProductsByCategory("Tarts");
             return View(products);
-        }
-
-
-        [HttpGet("crud")]
-        public IActionResult Crud()
-        {
-            List<Product> empList = _dataRepository.GetAllProducts().ToList<Product>();
-            return View(empList);
-        }
-
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Product model)
-        {
-            Product tbl = new Product();
-            tbl.Category = model.Category;
-            tbl.Size = model.Size;
-            tbl.Price = model.Price;
-            tbl.Title = model.Title;
-            tbl.Description = model.Description;
-            tbl.PhotoId = model.PhotoId;
-            _context.Products.Add(tbl);
-            _context.SaveChanges();
-            return View("crud");
-        }
-
-        public ActionResult Delete(int id)
-        {
-            var item = _context.Products.FirstOrDefault(x => x.Id.Equals(id));
-            if (item != null)
-            {
-                _context.Products.Remove(item);
-                _context.SaveChanges();
-            }
-            var item2 = _context.Products.ToList();
-            return View("crud", item2);
         }
     }
 }
