@@ -1,0 +1,34 @@
+﻿@model WebApplicationBPR2.Data.Entities.Product
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="form-group">
+            <label>Category:</label>
+            <input class="form-control" name="Category" placeholder="Enter Category" />
+        </div>
+        <div class="form-group">
+            <label>Size:</label>
+            <input class="form-control" name="Size" placeholder="Enter Size" />
+        </div>
+        <div class="form-group">
+            <label>Price:</label>
+            <input class="form-control" name="Price" placeholder="Enter Price" />
+        </div>
+        <div class="form-group">
+            <label>Title:</label>
+            <input class="form-control" name="Title" placeholder="Enter Title" />
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <input class="form-control" name="Description" placeholder="Enter Description" />
+        </div>
+        <div class="form-group">
+            <label>PhotoId:</label>
+            <input class="form-control" name="PhotoId" placeholder="Enter PhotoId" />
+        </div>
+        <div class="button">
+            <button>Submit</button>
+        </div>
+    </div>
+}
