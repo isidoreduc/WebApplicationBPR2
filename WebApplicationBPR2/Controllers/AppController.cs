@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -142,7 +143,7 @@ namespace WebApplicationBPR2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Submit(Product model)
+        public IActionResult Submit(Product model)
         {
             Product tbl = new Product();
             tbl.Category = model.Category;
@@ -157,7 +158,7 @@ namespace WebApplicationBPR2.Controllers
             return View("crud", products);
         }
 
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             var item = _context.Products.FirstOrDefault(x => x.Id.Equals(id));
             if (item != null)
@@ -165,8 +166,30 @@ namespace WebApplicationBPR2.Controllers
                 _context.Products.Remove(item);
                 _context.SaveChanges();
             }
-            var item2 = _context.Products.ToList();
-            return View("crud", item2);
+            var products = _context.Products.ToList();
+            return View("crud", products);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var item = _context.Products.Where(x => x.Id == id).First();
+            return View(item);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product model)
+        {
+            var item = _context.Products.Where(x => x.Id == model.Id).First();
+            item.Category = model.Category;
+            item.Size = model.Size;
+            item.Price = model.Price;
+            item.Title = model.Title;
+            item.Description = model.Description;
+            item.PhotoId = model.PhotoId;
+            _context.SaveChanges();
+
+            var products = _context.Products.ToList();
+            return View("crud", products);
         }
     }
 }
