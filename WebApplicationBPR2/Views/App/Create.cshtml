@@ -28,7 +28,10 @@
             <input class="form-control" name="PhotoId" placeholder="Enter PhotoId" />
         </div>
         <div class="button">
-            <button>Submit</button>
+            <button asp-controller="App" asp-action="Submit">Submit</button>
+        </div>
+        <div>
+            <p><a asp-controller="App" asp-action="crud">Back</a></p>
         </div>
     </div>
 }

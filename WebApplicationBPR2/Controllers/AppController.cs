@@ -142,7 +142,7 @@ namespace WebApplicationBPR2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product model)
+        public ActionResult Submit(Product model)
         {
             Product tbl = new Product();
             tbl.Category = model.Category;
@@ -153,7 +153,8 @@ namespace WebApplicationBPR2.Controllers
             tbl.PhotoId = model.PhotoId;
             _context.Products.Add(tbl);
             _context.SaveChanges();
-            return View("crud");
+            var products = _context.Products.ToList();
+            return View("crud", products);
         }
 
         public ActionResult Delete(int id)
