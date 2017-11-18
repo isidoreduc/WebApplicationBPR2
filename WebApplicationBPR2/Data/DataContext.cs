@@ -16,7 +16,8 @@ namespace WebApplicationBPR2.Data
         }
         // properties created for entities that we want to query for 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; } // to set cart orders to database
     }
 }

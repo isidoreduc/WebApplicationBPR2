@@ -1,0 +1,7 @@
+﻿@model ProductListViewModel
+
+@ViewBag.CurrentCategory
+@foreach (var p in Model.Products)
+{
+    @Html.Partial("ProductOverviewSummary", p)
+}

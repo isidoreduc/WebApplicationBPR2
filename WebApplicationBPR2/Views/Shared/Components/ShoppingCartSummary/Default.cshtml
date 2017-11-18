@@ -1,0 +1,17 @@
+﻿@model ShoppingCartViewModel
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+@if (Model.ShoppingCart.OrderItems.Count > 0)
+{
+    <li>
+        <a>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <a id="cart-status" asp-controller ="ShoppingCart" asp-action="Index">
+                @Model.ShoppingCart.OrderItems.Count
+            </a>
+        </a>
+    </li>
+}
+
+   

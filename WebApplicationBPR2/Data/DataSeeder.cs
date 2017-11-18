@@ -28,7 +28,7 @@ namespace WebApplicationBPR2.Data
                 {
                     new Product()
                     {
-                        Category = "Ice Cream",
+                        Category = new Category{CategoryName = "Ice Cream" },
                         Description = "A delicious profiterol",
                         Price = 13.99M,
                         Size = 400,
@@ -37,7 +37,7 @@ namespace WebApplicationBPR2.Data
                     },
                     new Product
                     {
-                        Category = "Cakes",
+                        Category = new Category{CategoryName = "Cakes" },
                         Description = "A delicious cake",
                         Price = 19.99M,
                         Size = 700,
@@ -46,7 +46,7 @@ namespace WebApplicationBPR2.Data
                     },
                     new Product
                     {
-                        Category = "Tarts",
+                        Category = new Category{CategoryName = "Tarts" },
                         Description = "A delicious tart",
                         Price = 3.99M,
                         Size = 100,

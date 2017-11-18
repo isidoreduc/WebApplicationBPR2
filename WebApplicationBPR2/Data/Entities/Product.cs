@@ -11,12 +11,15 @@ namespace WebApplicationBPR2.Data.Entities
     {
         // id = primary key for our entity, it is going to be autoincremented with each product added
         public int Id { get; set; }
-        public string Category { get; set; }
+        
         public int Size { get; set; } //in grams
         public decimal Price { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string PhotoId { get; set; }
+        public bool InStock { get; set; }
+        public bool IsProductOfTheWeek { get; set; }
+        public virtual Category Category { get; set; }
 
     }
 }

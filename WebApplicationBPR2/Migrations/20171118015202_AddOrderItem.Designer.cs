@@ -11,28 +11,15 @@ using WebApplicationBPR2.Data;
 namespace WebApplicationBPR2.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20171118015202_AddOrderItem")]
+    partial class AddOrderItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("WebApplicationBPR2.Data.Entities.Category", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CategoryDescription");
-
-                    b.Property<string>("CategoryName");
-
-                    b.HasKey("CategoryId");
-
-                    b.ToTable("Categories");
-                });
 
             modelBuilder.Entity("WebApplicationBPR2.Data.Entities.Order", b =>
                 {
@@ -77,13 +64,9 @@ namespace WebApplicationBPR2.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CategoryId");
+                    b.Property<string>("Category");
 
                     b.Property<string>("Description");
-
-                    b.Property<bool>("InStock");
-
-                    b.Property<bool>("IsProductOfTheWeek");
 
                     b.Property<string>("PhotoId");
 
@@ -94,8 +77,6 @@ namespace WebApplicationBPR2.Migrations
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -109,13 +90,6 @@ namespace WebApplicationBPR2.Migrations
                     b.HasOne("WebApplicationBPR2.Data.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
-                });
-
-            modelBuilder.Entity("WebApplicationBPR2.Data.Entities.Product", b =>
-                {
-                    b.HasOne("WebApplicationBPR2.Data.Entities.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId");
                 });
 #pragma warning restore 612, 618
         }

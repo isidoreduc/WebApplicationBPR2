@@ -6,6 +6,6 @@ namespace WebApplicationBPR2.Data.Repository
     public interface IDataRepository
     {
         IEnumerable<Product> GetAllProducts();
-        IEnumerable<Product> GetProductsByCategory(string category);
+        IEnumerable<Product> GetProductsByCategory(string categoryName);
     }
 }

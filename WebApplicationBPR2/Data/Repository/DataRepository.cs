@@ -22,10 +22,10 @@ namespace WebApplicationBPR2.Data.Repository
                         ToList();
         }
 
-        public IEnumerable<Product> GetProductsByCategory(string category)
+        public IEnumerable<Product> GetProductsByCategory(string categoryName)
         {
             return _dataContext.Products.
-                        Where(c => c.Category == category).
+                        Where(c => c.Category.CategoryName == categoryName).
                         ToList();
 
         }

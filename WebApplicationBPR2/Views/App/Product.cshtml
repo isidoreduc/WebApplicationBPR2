@@ -1,6 +1,4 @@
 ﻿@model IEnumerable<Product>
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
 
 <div id="body">
     <div class="header">
@@ -9,115 +7,46 @@
         </div>
     </div>
 
-
-
     <div>
+        <hr />
         <ul>
-            <li>
-
-                <h1>Ice Cream</h1>
-                <img src="~/images/green-apple.jpg" alt="">
-                <p>This website template has been designed by freewebsitetemplates.com for you, for free.</p>
-                <br />
-                <p><a asp-controller="App" asp-action="IceCream" >Read More</a></p>
+            <li class="menu">
+                <a asp-controller="App" asp-action="IceCream"><h2>Ice Cream</h2></a>              
             </li>
-            <li>
-
-                <h1>Tarts</h1>
-                <img src="~/images/pineapple.jpg" alt="">
-                <p>This website template has been designed by freewebsitetemplates.com for you, for free.</p>
-                <br />
-                <p><a asp-controller="App" asp-action="Tarts">Read More</a></p>
+            <li class="menu">
+                <a asp-controller="App" asp-action="Cakes"><h2>Cakes</h2></a>
             </li>
-            <li>
-
-                <h1>Cakes</h1>
-                <img src="~/images/blueberry.jpg" class="img-responsive">
-                <p>This website template has been designed by freewebsitetemplates.com for you, for free.</p>
-                <br />
-                <p><a asp-controller="App" asp-action="Cakes" >Read More</a></p>
+            <li class="menu">
+                <a asp-controller="App" asp-action="Tarts"><h2>Tarts</h2></a>
             </li>
+
         </ul>
+        <hr />
+        
     </div>
-    @*@foreach (var item in Model)
+   
+
+    <div >
+   
+        @foreach (var item in Model)
         {
-            <div class="col-md-3">
-                <img src="~/images/@(item.PhotoId).jpg" alt="@item.Title">
-                <ul>
-                    <li>
-                        <h2>@item.Title</h2>
-                        <p>Price: @item.Price</p>
-                        <p>Size: @item.Size</p>
-                        <p>Description: @item.Description </p>
-                        <p><button class="btn-success"> Buy </button></p>
-                    </li>
-                </ul>
+            <div class="col-md-4">
+
+                <img src="~/images/@(item.PhotoId).jpg" alt="">
+                <div class="caption">
+
+                    <h3>
+                        <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+                    </h3>
+                    <p>@item.Description</p>
+                    <p><h3 class="img-thumbnail">@item.Price.ToString("c")</h3></p>
+                    <p class="button">
+                        <a class="btn btn-success" asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
+                           asp-route-productId="@item.Id">Add to cart</a>
+                    </p>
+                </div>
             </div>
-        }*@
+        }
+    </div>
 </div>
-
-
-
-
-
-
-
-
-
-                    @*<div>
-                <ul>
-                    <li>
-                        <h1>Ice Cream</h1>
-                        <p>This website template has been designed by freewebsitetemplates.com for you, for free.</p>
-                    </li>
-                    <li>
-                        <img src="~/images/kiwi.jpg" alt="">
-                        <h2>Kiwi</h2>
-                    </li>
-                    <li>
-                        <img src="~/images/mango.jpg" alt="">
-                        <h2>Mango</h2>
-                    </li>
-                    <li>
-                        <img src="~/images/cantaloupe.jpg" alt="">
-                        <h2>Cantaloupe</h2>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <h1>Berry Special</h1>
-                        <p>This website template has been designed by freewebsitetemplates.com for you, for free.</p>
-                    </li>
-                    <li>
-                        <img src="~/images/blackberry.jpg" alt="">
-                        <h2>blackberry</h2>
-                    </li>
-                    <li>
-                        <img src="~/images/strawberry.jpg" alt="">
-                        <h2>Strawberry</h2>
-                    </li>
-                    <li>
-                        <img src="~/images/blueberry.jpg" alt="">
-                        <h2>BLUEBERRY</h2>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <h1>Fruit Blast</h1>
-                        <p>This website template has been designed by freewebsitetemplates.com for you, for free.</p>
-                    </li>
-                    <li>
-                        <img src="~/images/grapes.jpg" alt="">
-                        <h2>Grapes</h2>
-                    </li>
-                    <li>
-                        <img src="~/images/green-apple.jpg" alt="">
-                        <h2>Green Apple</h2>
-                    </li>
-                    <li>
-                        <img src="~/images/pineapple.jpg" alt="">
-                        <h2>Pineapple</h2>
-                    </li>
-                </ul>
-            </div>*@
-</div>
+   

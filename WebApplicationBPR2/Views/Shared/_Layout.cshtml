@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> @ViewBag.Title</title>
 
-    
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="~/css/mobile.css">
-    @*<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    
     
     
 </head>
@@ -33,16 +33,18 @@
                     </li>
                     <li class="menu">
                         <a asp-controller="App" asp-action="Product">Product</a>
+                        @*@await Component.InvokeAsync("CategoryMenu")*@
                     </li>
                     <li class="menu">
                         <a asp-controller="App" asp-action="Blog">Blog</a>
                     </li>
                     <li class="menu">
-                        <a asp-controller="App" asp-action="Order">Order</a>
+                        <a asp-controller="ShoppingCart" asp-action="index">Order</a>
                     </li>
                     <li class="menu">
                         <a asp-controller="App" asp-action="Contact">Contact</a>
                     </li>
+                    @await Component.InvokeAsync("ShoppingCartSummary")
                 </ul>
             </div>
         </div>
