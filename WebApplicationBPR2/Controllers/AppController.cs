@@ -15,18 +15,18 @@ namespace WebApplicationBPR2.Controllers
     {
         private readonly IMailService _mailService;
         private readonly IDataRepository _dataRepository;
-        
+        private readonly IProductRepository _productRepository;
 
-        public AppController(IMailService mailService, IDataRepository dataRepository)
+        public AppController(IMailService mailService, IDataRepository dataRepository, IProductRepository productRepository)
         {
             _mailService = mailService;
             _dataRepository = dataRepository;
-            
+            _productRepository = productRepository;
         }
         //displays by default a view called Index from path Views/(folder with the name of our controller("App"))
         public IActionResult Index() 
         {
-            return View(); 
+            return View();
         }
 
         // delievers a request; // routing attribute so that we can make contact page more discoverable. Now we can ask specifically for website.com/contact not for the whole path website.com/app/contact

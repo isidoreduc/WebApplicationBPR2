@@ -20,7 +20,7 @@ namespace WebApplicationBPR2.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        
+
         public ViewResult List(string categoryName)
         {
             IEnumerable<Product> products;
@@ -54,6 +54,25 @@ namespace WebApplicationBPR2.Controllers
             return View(product);
         }
 
+        public IActionResult Search(string searchString)
+        {
+            string _searchString = searchString;
+            IEnumerable<Product> products;
+            string currentCategory = string.Empty;
+
+            if (string.IsNullOrEmpty(_searchString))
+            {
+                products = _productRepository.Products.OrderBy(p => p.Id);
+            }
+            else
+            {
+                products = _productRepository.Products.Where(p => p.Title.ToLower().Contains(_searchString.ToLower()));
+            }
+            if (products.Count() == 0)
+                return View("NotFoundSearch");
+            return View("SearchProductSummary", products);
+            //return View("~/Views/Product/List.cshtml", new ProductListViewModel { Products = products, CurrentCategory = "All products" });
+        }
     }
 }
 

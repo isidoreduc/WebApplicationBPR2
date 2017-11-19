@@ -179,6 +179,7 @@ img {
 }
 #body.home div.header div a {
 	background: url(../images/icons.png) no-repeat 0 -128px;
+    box-sizing: content-box;
 	color: #FFFFFF;
 	display: block;
 	font-family: quicksand-bold-webfont;
@@ -1022,10 +1023,10 @@ img {
 }
 /*----------------------------------------footer-styles---------------------------------------*/
 #footer {
-	background-color: #cb3362;
-	margin: 0;
-	padding: 0;
-	width: 100%;
+    background-color: #cb3362;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 #footer div {
 	margin: 0 auto;

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Product>
+
+<div id="body">
+    <div class="header">
+        @foreach (var item in Model)
+        {
+            <div class=" row">
+                <img src="~/images/@(item.PhotoId).jpg" alt="">
+                <h3>
+                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+                </h3>
+                <p>@item.Description</p>
+                <p><h3 class="img-thumbnail">@item.Price.ToString("c")</h3></p>
+                <p class="button">
+                    <a class="btn btn-success" asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
+                       asp-route-productId="@item.Id">Add to cart</a>
+                </p>
+            </div>
+        }
+        
+    </div>
+</div>

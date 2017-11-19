@@ -1,7 +1,7 @@
-﻿@model ProductListViewModel
+﻿@*@model ProductListViewModel
 
 @ViewBag.CurrentCategory
 @foreach (var p in Model.Products)
 {
-    @Html.Partial("ProductOverviewSummary", p)
-}
+    @Html.Partial("ProductSummary", p)
+}*@

@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20171119034120_Orders-bis.cs" />
+    <Compile Remove="Migrations\20171119034120_Orders-bis.Designer.cs" />
+    <Compile Remove="Migrations\20171119034250_Orders-bis1.cs" />
+    <Compile Remove="Migrations\20171119034250_Orders-bis1.Designer.cs" />
+    <Compile Remove="Migrations\20171119041503_Orders2.cs" />
+    <Compile Remove="Migrations\20171119041503_Orders2.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" />

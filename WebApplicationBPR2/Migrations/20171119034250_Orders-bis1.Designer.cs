@@ -11,9 +11,10 @@ using WebApplicationBPR2.Data;
 namespace WebApplicationBPR2.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20171119034250_Orders-bis1")]
+    partial class Ordersbis1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,6 +66,8 @@ namespace WebApplicationBPR2.Migrations
 
                     b.Property<string>("OrderNumber");
 
+                    b.Property<DateTime>("OrderPlaced");
+
                     b.Property<decimal>("OrderTotal");
 
                     b.Property<string>("PhoneNumber")
@@ -88,7 +91,7 @@ namespace WebApplicationBPR2.Migrations
                     b.Property<int>("OrderItemId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("OrderId");
+                    b.Property<int>("OrderId");
 
                     b.Property<int?>("ProductId");
 
@@ -139,7 +142,8 @@ namespace WebApplicationBPR2.Migrations
                 {
                     b.HasOne("WebApplicationBPR2.Data.Entities.Order", "Order")
                         .WithMany("Items")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("WebApplicationBPR2.Data.Entities.Product", "Product")
                         .WithMany()

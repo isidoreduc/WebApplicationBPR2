@@ -3,47 +3,46 @@
     ViewBag.Title = "Frozen Yogurt Shop - Home";
 }
 
-
-        <div id="body" class="home">
-            <div class="header">
-                <img src="~/images/bg-home.jpg" alt="">
-                <div>
-                    <a asp-controller="App" asp-action="Product">Freeze Delight</a>
-                </div>
-            </div>
-
-
-            <div class="body">
-                <div>
-                    <div>
-                        <h1>NEW PRODUCT</h1>
-                        <h2>The Twist of Healthy Yogurt</h2>
-                        <p>This website has been created by yours truly. Use it as you see fit and don't give a damn. You can replace all this text with your own text.</p>
-                    </div>
-                    <img src="~/images/yogurt.jpg" alt="">
-                </div>
-            </div>
-            <div class="footer">
-                <div>
-                    <ul>
-                        <li>
-                            <a asp-controller="App" asp-action="Product" class="product"></a>
-                            <h1>PRODUCTS</h1>
-                        </li>
-                        <li>
-                            <a asp-controller="App" asp-action="About" class="about"></a>
-                            <h1>OUR STORY</h1>
-                        </li>
-                        <li>
-                            <a asp-controller="App" asp-action="Order" class="flavor"></a>
-                            <h1>OUR STORE</h1>
-                        </li>
-                        <li>
-                            <a asp-controller="App" asp-action="Contact" class="contact"></a>
-                            <h1>OUR LOCATION</h1>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<div id="body" class="home">
+    <div class="header">
+        <img src="~/images/bg-home.jpg" alt="">
+        <div>
+            <a class="header" asp-controller="App" asp-action="Product">Freeze Delight</a>
         </div>
-        
+    </div>
+
+    <div class="body">
+        <div>
+            <div>
+                <h1>NEW PRODUCT</h1>
+                <h2>The Twist of Healthy Yogurt</h2>
+                <p>This website has been created by yours truly. Use it as you see fit and don't give a damn. You can replace all this text with your own text.</p>
+            </div>
+            <img src="~/images/yogurt.jpg" alt="">
+        </div>
+    </div>
+    <div class="footer">
+        <div>
+            <ul>
+                <li>
+                    <a asp-controller="App" asp-action="Product" class="product"></a>
+                    <h1>PRODUCTS</h1>
+                </li>
+                <li>
+                    <a asp-controller="App" asp-action="About" class="about"></a>
+                    <h1>OUR STORY</h1>
+                </li>
+                <li>
+                    <a asp-controller="ShoppingCart" asp-action="index" class="flavor"></a>
+                    <h1>OUR STORE</h1>
+                </li>
+                <li>
+                    <a asp-controller="App" asp-action="Contact" class="contact"></a>
+                    <h1>OUR LOCATION</h1>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+

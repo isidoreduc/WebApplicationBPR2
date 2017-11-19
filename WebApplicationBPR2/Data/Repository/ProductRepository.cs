@@ -28,7 +28,7 @@ namespace WebApplicationBPR2.Data.Repository
         {
             get
             {
-                return _dataContext.Products.Include(c => c.Category).Where(p => p.IsProductOfTheWeek);
+                return _dataContext.Products.Where(p => p.IsProductOfTheWeek);
             }
         }
 

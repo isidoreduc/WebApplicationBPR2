@@ -32,6 +32,8 @@ namespace WebApplicationBPR2
             }
             );
 
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // allows us to work with the http context to establish a session
