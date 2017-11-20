@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace WebApplicationBPR2.Controllers
 {
-    public class IdentityController : Controller
+    public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
-        public IdentityController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -40,7 +40,7 @@ namespace WebApplicationBPR2.Controllers
                 if (result.Succeeded)
                 {
                     if (string.IsNullOrEmpty(loginViewModel.ReturnUrl))
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "App");
 
                     return Redirect(loginViewModel.ReturnUrl);
                 }
@@ -54,13 +54,13 @@ namespace WebApplicationBPR2.Controllers
         public IActionResult Register() => View();
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Register(LoginViewModel loginViewModel)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = loginViewModel.UserName };
-                var result = await _userManager.CreateAsync(user, loginViewModel.Password);
+                //var user = new IdentityUser() { UserName = loginViewModel.UserName };
+                var result = await _userManager.CreateAsync(new IdentityUser() { UserName = loginViewModel.UserName }, loginViewModel.Password);
 
                 if (result.Succeeded)
                 {
@@ -78,7 +78,7 @@ namespace WebApplicationBPR2.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "App");
         }
     }
 }

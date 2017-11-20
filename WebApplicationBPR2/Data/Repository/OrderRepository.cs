@@ -30,6 +30,7 @@ namespace WebApplicationBPR2.Data.Repository
                 {
                     Quantity = shoppingCartItem.Quantity,
                     OrderItemId = shoppingCartItem.Product.Id,
+                    //Order = shoppingCartItem.Order,
                     UnitPrice = shoppingCartItem.Product.Price
                 };
 

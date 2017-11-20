@@ -35,7 +35,6 @@
                         </li>
                         <li class="menu">
                             <a asp-controller="App" asp-action="Product">Products</a>
-                            @*@await Component.InvokeAsync("CategoryMenu")*@
                         </li>
                         <li class="menu">
                             <a asp-controller="App" asp-action="Blog">Blog</a>
@@ -47,6 +46,8 @@
                             <a asp-controller="App" asp-action="Contact">Contact</a>
                         </li>
                         @await Component.InvokeAsync("ShoppingCartSummary")
+                        @await Html.PartialAsync("LoginPartial")
+                       
                     </ul>
                     <form class="navbar-form navbar-right" asp-controller="Product" asp-action="Search" method="get">
                         <div class="form-group">

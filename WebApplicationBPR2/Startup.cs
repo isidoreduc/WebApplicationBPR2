@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using WebApplicationBPR2.Data.Repository;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebApplicationBPR2
 {
@@ -31,7 +32,7 @@ namespace WebApplicationBPR2
                 config.UseSqlServer(_configuration.GetConnectionString("StoreConnectionString")); //needs a connection string to our database
             }
             );
-
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<DataContext>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
@@ -52,6 +53,7 @@ namespace WebApplicationBPR2
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) // basically saying when you start up tell me how you wanna listen for web requests, what do you want to do when web requests are executed
         {
             app.UseSession(); //uses the session service
+            app.UseIdentity();
 
             if (env.IsDevelopment()) // one can set the environment in project Properties/Debug/Environment variables
             {
