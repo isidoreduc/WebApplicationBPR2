@@ -29,8 +29,8 @@ namespace WebApplicationBPR2.Data.Repository
                 var orderItem = new OrderItem()
                 {
                     Quantity = shoppingCartItem.Quantity,
-                    OrderItemId = shoppingCartItem.Product.Id,
-                    //Order = shoppingCartItem.Order,
+                    //OrderItemId = shoppingCartItem.Product.Id,
+                    Order = shoppingCartItem.Order,
                     UnitPrice = shoppingCartItem.Product.Price
                 };
 
