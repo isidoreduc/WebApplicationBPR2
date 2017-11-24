@@ -36,7 +36,7 @@ namespace WebApplicationBPR2.Data.Repository
 
                 _dataContext.OrderItems.Add(orderItem);
             }
-
+            order.OrderTotal = _shoppingCart.GetShoppingCartTotal(); // reads the order total
             _dataContext.SaveChanges();
         }
     }
